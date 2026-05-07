@@ -1,7 +1,7 @@
 import { Button, Input, Space, List, Tag, Empty } from 'antd'
 import { useState } from 'react'
-import { useTodoList } from '../hooks/useTodoList'
-import type { Todo } from '../hooks/useTodoList'
+import { useTodoList } from '../../hooks/useTodoList'
+import type { Todo } from '../../hooks/useTodoList'
 import './TodoList.css'
 
 export const TodoList: React.FC = () => {
