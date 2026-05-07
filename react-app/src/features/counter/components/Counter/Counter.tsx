@@ -1,13 +1,13 @@
-import { Button } from '@/shared/ui';
-import { useCounter } from '@/features/counter/hooks/useCounter';
-import './Counter.css';
+import { Button, Space } from 'antd'
+import { useCounter } from '@/features/counter/hooks/useCounter'
+import './Counter.css'
 
 interface CounterProps {
-  initialCount?: number;
+  initialCount?: number
 }
 
 export const Counter: React.FC<CounterProps> = ({ initialCount = 0 }) => {
-  const { count, increment, decrement, reset } = useCounter(initialCount);
+  const { count, increment, decrement, reset } = useCounter(initialCount)
 
   return (
     <div className="counter-component">
@@ -15,16 +15,17 @@ export const Counter: React.FC<CounterProps> = ({ initialCount = 0 }) => {
         <span className="count-value">{count}</span>
       </div>
       <div className="counter-controls">
-        <Button onClick={decrement} variant="secondary" size="large">
-          -
-        </Button>
-        <Button onClick={() => reset()} variant="secondary">
-          Reset
-        </Button>
-        <Button onClick={increment} variant="primary" size="large">
-          +
-        </Button>
+        <Space>
+          <Button onClick={decrement} icon={<span>-</span>}>
+            减少
+          </Button>
+          <Button onClick={() => reset()}>重置</Button>
+          <Button onClick={increment} type="primary" icon={<span>+</span>}>
+            增加
+          </Button>
+        </Space>
       </div>
     </div>
-  );
-};
+  )
+}
+

@@ -1,42 +1,60 @@
-import { useState, useCallback } from 'react';
-import { postApi } from '@/api/modules/postApi';
-import { Button, Card } from '@/shared/ui';
-import './ApiExample.css';
+import { useState, useCallback } from 'react'
+import { postApi } from '@/api/modules/postApi'
+import { Button, Card, Space, Typography, Spin, Alert } from 'antd'
+import './ApiExample.css'
+
+const { Title, Paragraph } = Typography
 
 export const ApiExample: React.FC = () => {
-  const [data, setData] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<any>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(null);
+    setLoading(true)
+    setError(null)
     try {
-      const result = await postApi.getPost(1);
-      setData(result);
+      const result = await postApi.getPost(1)
+      setData(result)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch');
+      setError(err instanceof Error ? err.message : 'Failed to fetch')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  }, []);
+  }, [])
 
   return (
     <div className="api-component">
-      <Card title="API Example">
-        <Button onClick={fetchData} disabled={loading} variant="primary">
-          {loading ? 'Loading...' : 'Fetch Data'}
-        </Button>
+      <Card title="API 示例" size="default">
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Button onClick={fetchData} loading={loading} type="primary">
+            {loading ? '加载中...' : '获取数据'}
+          </Button>
 
-        {error && <div className="error-message">Error: {error}</div>}
+          {error && (
+            <Alert message="请求失败" description={error} type="error" showIcon />
+          )}
 
-        {data && (
-          <div className="data-display">
-            <h4>{data.title}</h4>
-            <p>{data.body}</p>
-          </div>
-        )}
+          {loading && <Spin tip="加载中..." />}
+
+          {data && (
+            <Card type="inner" title="响应数据" size="small">
+              <Paragraph>
+                <strong>ID:</strong> {data.id}
+              </Paragraph>
+              <Paragraph>
+                <strong>标题:</strong>
+                <Title level={5}>{data.title}</Title>
+              </Paragraph>
+              <Paragraph>
+                <strong>内容:</strong>
+                <Paragraph type="secondary">{data.body}</Paragraph>
+              </Paragraph>
+            </Card>
+          )}
+        </Space>
       </Card>
     </div>
-  );
-};
+  )
+}
+

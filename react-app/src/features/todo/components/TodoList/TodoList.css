@@ -11,50 +11,28 @@
   margin-bottom: 1.5rem;
 }
 
-.todo-input-field {
+.todo-input :global(.ant-input) {
   flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
 }
 
-.todo-input-field:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+.todo-filters {
+  margin-bottom: 1rem;
 }
 
 .todo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  margin-top: 1rem;
 }
 
 .todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.todo-item:last-child {
-  border-bottom: none;
-}
-
-.todo-text {
-  flex: 1;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: background-color 0.2s;
 }
 
-.todo-text:hover {
-  color: #667eea;
+.todo-item:hover {
+  background-color: #fafafa;
 }
 
-.todo-item.completed .todo-text {
-  text-decoration: line-through;
+.todo-item.completed :global(.ant-list-item-meta-title) {
   color: #999;
 }
 

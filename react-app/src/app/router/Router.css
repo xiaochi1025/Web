@@ -1,27 +1,22 @@
-.nav-menu {
+.app-layout {
+  min-height: 100vh;
+}
+
+.app-header {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 
-.nav-menu a {
-  text-decoration: none;
-  color: #667eea;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 2rem;
 }
 
-.nav-menu a:hover {
-  background-color: #f0f0f0;
-}
-
-.router-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.app-header :global(.ant-menu) {
+  flex: 1;
+  min-width: 0;
 }

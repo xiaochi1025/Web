@@ -19,6 +19,13 @@ export default defineConfig({
     host: true,
     allowedHosts: ['.monkeycode-ai.online']
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',
