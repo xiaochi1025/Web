@@ -1,4 +1,4 @@
-import { Post } from '@/api/modules/postApi';
+import { type Post } from '@/api/modules/postApi';
 
 export type PostState = {
   items: Post[];

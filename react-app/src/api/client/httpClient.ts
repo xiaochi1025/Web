@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { type AxiosError, type AxiosResponse } from 'axios';
 import { API_BASE_URL } from '@/shared/constants';
 
 export class ApiError extends Error {

@@ -1,4 +1,4 @@
-import { User } from '@/shared/types';
+import { type User } from '@/shared/types';
 
 export type UserState = {
   current: User | null;
